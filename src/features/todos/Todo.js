@@ -1,7 +1,20 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { todoRemoved } from "./todosSlice";
 
-function Todo({ text }) {
-  return <li>{text}</li>;
+function Todo({ todo }) {
+	const dispatch = useDispatch();
+	function handleDeleteClick() {
+		// TODO: dispatch an action
+		dispatch(todoRemoved(todo.id));
+	}
+	console.log(todo);
+	return (
+		<li>
+			<span>{todo.text}</span>
+			<button onClick={handleDeleteClick}>Delete</button>
+		</li>
+	);
 }
 
 export default Todo;
